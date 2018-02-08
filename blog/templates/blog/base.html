@@ -1,0 +1,50 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>I Blog</title>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <link rel="stylesheet" href="{% static 'css/bulma.css' %}">
+    </head>
+    <body>
+        
+        <section class="hero is-dark">
+            <div class="hero-body">
+                <div class="container">
+                <h1 class="title">
+                    <a href="/"> I Blog </a>
+                </h1>
+                <h2 class="subtitle">
+                    <a href="/"> Wise Wayz in Wordz </a>
+                </h2>
+                </div>
+            </div>
+        </section><br>
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'post_new' %}" class="button is-dark is-rounded" style="float:right;">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>New Post</span>
+            </a>
+        </div><br><br>
+        {% endif %}
+        
+       {% block content %}
+       
+       {% endblock %}
+
+       
+       {% if user.is_authenticated %}
+       <div>
+            <a href="{% url 'post_new' %}" class="button is-dark is-rounded" style="float:right;">
+                <span class="icon">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span>New Post</span>
+            </a>
+        </div>
+        {% endif %}
+
+    </body>
+</html>

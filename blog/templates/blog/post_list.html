@@ -1,0 +1,41 @@
+{% extends "blog/base.html" %}    
+    {% block content %}
+        {%for post in posts%}
+
+        <div class="box">
+            <article class="media">
+                <div class="media-left">
+                <figure class="image is-64x64">
+                    <img src="http://localhost:4000/images/placeholders/128x128.png" alt="Image">
+                </figure>
+                </div>
+                <div class="media-content">
+                <div class="content">
+                    <p>
+                    <strong>{{ post.title }}</strong> <small>@{{ post.author }}</small> 
+                    <br>
+                    {{post.text|linebreaksbr}}
+                    </p>
+                   <p> <strong><small>Published: {{ post.published_date }}</small></strong></p>
+                   <p><small><a href="{% url 'post_detail' pk=post.pk %}">View More Details</a></small></p>
+
+                </div>
+                <nav class="level is-mobile">
+                    <div class="level-left">
+                    <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-reply"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-retweet"></i></span>
+                    </a>
+                    <a class="level-item">
+                        <span class="icon is-small"><i class="fas fa-heart"></i></span>
+                    </a>
+                    </div>
+                </nav>
+                </div>
+            </article>
+        </div>
+
+        {%endfor%}
+    {% endblock %}
